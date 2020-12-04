@@ -2,6 +2,25 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 
+LOCATION_CHOICES = (
+    (0, '서울'),
+    (1, '대구'),
+    (2, '대전'),
+    (3, '광주'),
+    (4, '인천'),
+    (5, '부산'),
+    (6, '울산'),
+    (7, '세종'),
+    (8, '제주'),
+    (9, '경기도'),
+    (10, '강원도'),
+    (11, '충청남도'),
+    (12, '충청북도'),
+    (13, '전라남도'),
+    (14, '전라북도'),
+    (15, '경상남도'),
+    (16, '경상북도'),
+)
 
 class UserManager(BaseUserManager):
     """
@@ -38,11 +57,7 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255)
     nickname = models.CharField(max_length=10, blank=False, null=True)
-    location = models.CharField(max_length=10, default='서울')
-    #join_competition
-    #author_competition
-    #join_challenge
-    #join_meetings
+    location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 

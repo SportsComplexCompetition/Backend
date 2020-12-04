@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     #My App
     'accounts',
     'challenges',
@@ -52,9 +53,32 @@ INSTALLED_APPS = [
     'datas',
     'meetings',
     'rest_framework',
+    'rest_framework.authtoken',
+    #rest_auth
+    'rest_auth',
+    'rest_auth.registration',
+    #allauth
+    'allauth',
+    
+
     
 ]
 
+SITE_ID = 1
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),    
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',    
+    ),
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

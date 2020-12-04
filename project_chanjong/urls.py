@@ -16,8 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from datas import urls as datas_urls
+from meetings import urls as meetings_urls
+from accounts import urls as accounts_urls
+
+from rest_framework import routers
+from meetings.views import MeetingListViewSet, CommentListViewSet
+
+
+router = routers.DefaultRouter()
+router.register('meetinglist', MeetingListViewSet, basename='meeting')
+router.register('commentlist', CommentListViewSet, basename='comment')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
     path('data/', include(datas_urls)),
+    path('meeting/', include(meetings_urls)),
+    path('accounts/', include(accounts_urls)),
+
 ]
