@@ -33,7 +33,7 @@ for key, value in secrets.items():
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = "accounts.User" 
 # Application definition
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'competitions',
     'datas',
     'meetings',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
