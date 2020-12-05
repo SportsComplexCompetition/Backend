@@ -31,7 +31,9 @@ class Meeting(models.Model):
     find_people = models.PositiveIntegerField(blank=False, null=True)
     body = models.CharField(max_length=500, blank=False, null=True)
     created_at = models.DateField(auto_now_add=True)
-
+    category = models.CharField(max_length=30, blank=False, null=True)
+    address = models.CharField(max_length=50, blank=False, null=True)
+    
     def __str__(self):
         return self.title
 
@@ -42,4 +44,4 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=False, null=True)
 
     def __str__(self):
-        return self.user.email
+        return self.user.nickname

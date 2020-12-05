@@ -59,9 +59,9 @@ class User(AbstractUser):
     nickname = models.CharField(max_length=10, blank=False, null=True)
     location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['nickname']
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.nickname

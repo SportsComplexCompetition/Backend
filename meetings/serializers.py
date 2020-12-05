@@ -2,13 +2,13 @@ from rest_framework import serializers
 from meetings.models import Meeting, Comment
 
 class MeetingListSerializer(serializers.ModelSerializer):
-    host_email = serializers.ReadOnlyField(source='host.email')
+    host_nickname = serializers.ReadOnlyField(source='host.nickname')
     class Meta:
         model = Meeting
-        fields = ('host_email', 'host', 'location', 'title', 'find_people', 'body', 'created_at')
+        fields = ('pk', 'host_nickname', 'host', 'location', 'category', 'title', 'find_people', 'body', 'created_at', 'address')
 
 class CommentListSerializer(serializers.ModelSerializer):
-    user_email = serializers.ReadOnlyField(source='user.email')
+    user_nickname = serializers.ReadOnlyField(source='user.nickname')
     class Meta:
         model = Comment
-        fields = ('user_email', 'user', 'meeting', 'content', 'created_at')
+        fields = ('user_nickname', 'user', 'meeting', 'content', 'created_at')
