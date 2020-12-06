@@ -35,6 +35,6 @@ urlpatterns = [
     path('data/', include(datas_urls)),
     path('meeting/', include(meetings_urls)),
     path('accounts/', include(accounts_urls)),
-    # path('competitions/', include(competitions_urls)),
+    path('competitions/', include(comp_urls)),
 
 ]
