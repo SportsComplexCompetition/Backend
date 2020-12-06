@@ -18,14 +18,16 @@ from django.urls import path, include
 from datas import urls as datas_urls
 from meetings import urls as meetings_urls
 from accounts import urls as accounts_urls
+from competitions import urls as comp_urls
 
 from rest_framework import routers
 from meetings.views import MeetingListViewSet, CommentListViewSet
-
+from competitions.views import CompetitionListViewSet
 
 router = routers.DefaultRouter()
 router.register('meetinglist', MeetingListViewSet, basename='meeting')
 router.register('commentlist', CommentListViewSet, basename='comment')
+router.register('complist', CompetitionListViewSet, basename='competitions')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +35,6 @@ urlpatterns = [
     path('data/', include(datas_urls)),
     path('meeting/', include(meetings_urls)),
     path('accounts/', include(accounts_urls)),
+    # path('competitions/', include(competitions_urls)),
 
 ]
