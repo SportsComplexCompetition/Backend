@@ -11,3 +11,8 @@ class CustomRegisterSeriializer(RegisterSerializer):
         add_value = {'nickname': self.validated_data.get('nickname', '')}
         return_value.update(add_value)
         return return_value
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('pk', 'email', 'nickname', 'location')

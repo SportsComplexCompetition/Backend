@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     #My App
     'accounts',
-    'challenges',
     'competitions',
     'datas',
     'meetings',
@@ -59,12 +58,15 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     #allauth
     'allauth',
+    'allauth.account'
     
 
     
 ]
 
 SITE_ID = 1
+
+##  Authentication
 # REST_FRAMEWORK = {
 #     'DEFAULT_PERMISSION_CLASSES': (
 #         'rest_framework.permissions.IsAuthenticated',
@@ -74,6 +76,22 @@ SITE_ID = 1
 #         'rest_framework.authentication.SessionAuthentication',    
 #     ),
 # }
+
+##  django_rest_auth
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/?verification=1'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/?verification=1'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+OLD_PASSWORD_FIELD_ENABLED = True
+LOGOUT_ON_PASSWORD_CHANGE = False
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # AUTHENTICATION_BACKENDS = (
 #     'django.contrib.auth.backends.ModelBackend',
@@ -120,6 +138,16 @@ DATABASES = {
     }
 }
 
+# "DATABASES" : {
+#     "default" : {
+#         "ENGINE" : "django.db.backends.mysql",
+#         "NAME" : "chanjongp",
+#         "USER" : "Chanjongp$chanjongp",
+#         "PASSWORD" : "s9423093",
+#         "HOST" : "localhost",
+#         "PORT" : "3306"
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

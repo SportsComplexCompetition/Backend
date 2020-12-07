@@ -28,11 +28,11 @@ class Meeting(models.Model):
     host = models.ForeignKey(User, on_delete=models.CASCADE)
     location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     title = models.CharField(max_length=30, blank=False, null=True)
-    find_people = models.PositiveIntegerField(blank=False, null=True)
+    find_people = models.PositiveIntegerField()
     body = models.CharField(max_length=500, blank=False, null=True)
     created_at = models.DateField(auto_now_add=True)
-    category = models.CharField(max_length=30, blank=False, null=True)
-    address = models.CharField(max_length=50, blank=False, null=True)
+    category = models.CharField(max_length=30)
+    address = models.CharField(max_length=50)
     
     def __str__(self):
         return self.title
@@ -41,7 +41,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, blank=False)
     content = models.TextField(blank=False, max_length=500) 
-    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.nickname

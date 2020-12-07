@@ -23,11 +23,14 @@ from competitions import urls as comp_urls
 from rest_framework import routers
 from meetings.views import MeetingListViewSet, CommentListViewSet
 from competitions.views import CompetitionListViewSet
+from accounts.views import UserListViewSet
 
 router = routers.DefaultRouter()
 router.register('meetinglist', MeetingListViewSet, basename='meeting')
 router.register('commentlist', CommentListViewSet, basename='comment')
 router.register('complist', CompetitionListViewSet, basename='competitions')
+router.register('userlist', UserListViewSet, basename='user')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

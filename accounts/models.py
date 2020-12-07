@@ -63,5 +63,5 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    def __str__(self):
-        return self.nickname
+    # def __str__(self):
+    #     return self.nickname

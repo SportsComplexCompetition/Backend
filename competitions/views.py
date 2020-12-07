@@ -17,8 +17,8 @@ class CompetitionJoinAPIView(mixins.UpdateModelMixin, generics.GenericAPIView):
     def put(self, request, pk):
         competition = Competition.objects.get(pk=pk)
         competition.joined_people.add(User.objects.get(pk=request.data['user_pk']))
-        now_money = competition.money
-        request.data['money'] += now_money
+        now_money = competition.total_money
+        request.data['total_money'] += now_money
         return self.update(request)
 
     
