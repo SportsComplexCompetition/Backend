@@ -25,7 +25,7 @@ LOCATION_CHOICES = (
 
 
 class Meeting(models.Model):
-    host = models.ForeignKey(User, on_delete=models.CASCADE)
+    host = models.ForeignKey(User, on_delete=models.CASCADE, related_name='meeting_host')
     location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     title = models.CharField(max_length=30, blank=False, null=True)
     find_people = models.PositiveIntegerField()

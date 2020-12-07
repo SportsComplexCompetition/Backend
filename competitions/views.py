@@ -21,4 +21,4 @@ class CompetitionJoinAPIView(mixins.UpdateModelMixin, generics.GenericAPIView):
         request.data['total_money'] += now_money
         return self.update(request)
 
-    
+
