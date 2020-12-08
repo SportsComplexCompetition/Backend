@@ -22,6 +22,10 @@ LOCATION_CHOICES = (
     (16, '경상북도'),
 )
 
+
+
+
+
 class UserManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifiers
@@ -57,6 +61,8 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255)
     nickname = models.CharField(max_length=10, blank=False, null=True)
+    age = models.PositiveIntegerField()
+    sex = models.CharField(max_length=10, blank=False, null=True)
     location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['nickname']
