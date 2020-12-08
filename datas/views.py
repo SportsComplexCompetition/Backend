@@ -36,6 +36,7 @@ class GetLocalRankingData(APIView):
 class GetCategoryAverage(APIView):
     def get(self, request):
         result = get_average()
-        print(result)
         json_result = json.dumps(result)
-        return JsonResponse(json_result, safe=False, json_dumps_params={'ensure_ascii': False})
+        clear = json_result.replace("\\", "")
+        json_result1 = json.loads(clear)
+        return JsonResponse(json_result1, safe=False, json_dumps_params={'ensure_ascii': False})
