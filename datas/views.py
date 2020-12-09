@@ -6,7 +6,7 @@ import csv
 import pandas as pd
 import operator
 from django.http import JsonResponse
-from datas.datas import get_average
+from datas.datas import get_average, get_rank
 import json
 
 class GetLocalRankingData(APIView):
@@ -40,3 +40,12 @@ class GetCategoryAverage(APIView):
         clear = json_result.replace("\\", "")
         json_result1 = json.loads(clear)
         return JsonResponse(json_result1, safe=False, json_dumps_params={'ensure_ascii': False})
+
+class GetTopAvgLow(APIView):
+    def get(self, request):
+        result = get_rank()
+        json_result = json.dumps(result)
+        clear = json_result.replace("\\", "")
+        json_result1 = json.loads(clear)
+        return JsonResponse(json_result1, safe=False, json_dumps_params={'ensure_ascii': False})
+        
