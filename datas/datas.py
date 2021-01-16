@@ -18,7 +18,6 @@ def get_category():
     
     print(value3['RECOMEND_SPORTS_NM'].unique())
 
-
 def get_each_average(data):
     ave12 = int(data['ITEM_F012'].mean())
     ave19 = int(data['ITEM_F019'].mean())

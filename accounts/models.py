@@ -61,11 +61,11 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255)
     nickname = models.CharField(max_length=10, blank=False, null=True)
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(blank=True, null=False)
     sex = models.CharField(max_length=10, blank=False, null=True)
     location = models.PositiveIntegerField(choices=LOCATION_CHOICES, default=0)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nickname']
+    REQUIRED_FIELDS = ['nickname', 'age']
 
     objects = UserManager()
 

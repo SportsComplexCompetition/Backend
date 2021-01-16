@@ -66,16 +66,16 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-##  Authentication
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),    
-#     'DEFAULT_AUTHENTICATION_CLASSES' : (
-#         'rest_framework.authentication.TokenAuthentication',
-#         'rest_framework.authentication.SessionAuthentication',    
-#     ),
-# }
+#  Authentication
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),    
+    'DEFAULT_AUTHENTICATION_CLASSES' : (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',    
+    ),
+}
 
 ##  django_rest_auth
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
@@ -93,10 +93,11 @@ LOGOUT_ON_PASSWORD_CHANGE = False
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# AUTHENTICATION_BACKENDS = (
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -186,4 +187,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
- 
+
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSeriializer',
+}
+
+ACCOUNT_ADAPTER = 'accounts.adapter.CustomAccountAdapter'

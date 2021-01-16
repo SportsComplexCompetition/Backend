@@ -8,8 +8,10 @@ import operator
 from django.http import JsonResponse
 from datas.datas import get_average, get_rank
 import json
+from rest_framework.permissions import AllowAny
 
 class GetLocalRankingData(APIView):
+    permission_classes = (AllowAny, )
     def get(self, request):
         df1 = pd.read_csv("지역별_체력통계_데이터.csv", encoding='utf-8')
         a = df1[["CENTER_SD_NM", "CERT_GBN_GOLD", "CERT_GBN_SILVER", "CERT_GBN_BRONZE"]]
@@ -34,6 +36,7 @@ class GetLocalRankingData(APIView):
         return JsonResponse(sresult, safe=False, json_dumps_params={'ensure_ascii': False})
 
 class GetCategoryAverage(APIView):
+    permission_classes = (AllowAny, )
     def get(self, request):
         result = get_average()
         json_result = json.dumps(result)
@@ -42,6 +45,7 @@ class GetCategoryAverage(APIView):
         return JsonResponse(json_result1, safe=False, json_dumps_params={'ensure_ascii': False})
 
 class GetTopAvgLow(APIView):
+    permission_classes = (AllowAny, )
     def get(self, request):
         result = get_rank()
         json_result = json.dumps(result)
