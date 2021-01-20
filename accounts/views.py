@@ -6,6 +6,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from accounts.models import User
 from django.http import JsonResponse
+from rest_framework.permissions import AllowAny, IsAdminUser
 
 class CustomLoginView(LoginView):
     def get_response(self):
@@ -18,6 +19,7 @@ class CustomRegisterView(RegisterView):
     serializer_class = CustomRegisterSeriializer
 
 class UserListViewSet(ModelViewSet):
+    permission_classes = (IsAdminUser, )
     queryset = User.objects.all()
     serializer_class = UserListSerializer
 
