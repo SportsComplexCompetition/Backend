@@ -4,10 +4,13 @@ from competitions.models import  Competition
 from competitions.serializers import CompetitionListSerializer, CompetitionJoinSerializer
 from rest_framework import mixins, generics
 from accounts.models import User
+from rest_framework.permissions import AllowAny
 
 class CompetitionListViewSet(ModelViewSet):
+    permission_classes = (AllowAny, )
     queryset = Competition.objects.all()
     serializer_class = CompetitionListSerializer
+    
 
 
 class CompetitionJoinAPIView(mixins.UpdateModelMixin, generics.GenericAPIView):

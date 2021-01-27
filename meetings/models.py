@@ -39,7 +39,7 @@ class Meeting(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
-    meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, blank=False)
+    meeting = models.ForeignKey(Meeting, on_delete=models.CASCADE, blank=False, related_name='comment_from_meeting')
     content = models.TextField(blank=False, max_length=500) 
     created_at = models.DateTimeField(auto_now_add=True)
 
